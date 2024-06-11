@@ -5,7 +5,7 @@ import axios from "axios";
 function JokeUi() {
   const [count, setCount] = useState(0);
   const [post, setPost] = useState(null);
-  const baseURL = "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=religious,political";
+  const baseURL = "https://v2.jokeapi.dev/joke/Programming";
   const [isCallInProgress, setIsCallInProgress] = useState(false);
 
   //useEffect(fetchData, []);
@@ -38,6 +38,7 @@ function JokeUi() {
       >
         Click Me For Data
       </button>
+      {post != null && (post.flags.nsfw?"":fetchData())}
       {post != null &&
         (post.type === "single" ? (
           <h2>{post.joke}</h2>
