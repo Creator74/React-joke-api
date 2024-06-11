@@ -38,7 +38,7 @@ function JokeUi() {
       >
         Click Me For Data
       </button>
-      {post != null && (post.flags.nsfw || post.flags.explicit || post.flags.racist || post.flags.sexist ?(post.type === "single"?(<h2>{post.joke}</h2>):(<h2>{post.setup},{post.delivery}</h2>)):fetchData())}
+      {post != null && (post.flags.nsfw === false?fetchData():(post.type === "single"?(<h2>{post.joke}</h2>):(<h2>{post.setup},{post.delivery}</h2>)))}
       {/* {post != null &&
         (post.type === "single" ? (
           <h2>{post.joke}</h2>
