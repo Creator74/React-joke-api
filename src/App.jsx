@@ -38,15 +38,15 @@ function JokeUi() {
       >
         Click Me For Data
       </button>
-      {post != null && (post.flags.nsfw === false?fetchData():(post.type === "single"?(<h2>{post.joke}</h2>):(<h2>{post.setup},{post.delivery}</h2>)))}
-      {/* {post != null &&
+      {/* {post != null && (post.flags.nsfw === false?fetchData():(post.type === "single"?(<h2>{post.joke}</h2>):(<h2>{post.setup},{post.delivery}</h2>)))} */}
+      {post != null &&
         (post.type === "single" ? (
           <h2>{post.joke}</h2>
         ) : (
           <h2>
             {post.setup}, {post.delivery}
           </h2>
-        ))} */}
+        ))}
     </div>
   );
 }
