@@ -62,7 +62,7 @@ function MyForm() {
     setAreCallsInProgress(true);
     var urls = [];
     for (var i = 1; i <= numApiCalls; i++) {
-      urls.push("https://v2.jokeapi.dev/joke/Programming");
+      urls.push("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,explicit");
     }
     console.log(urls);
     try {
