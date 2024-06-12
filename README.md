@@ -1,1 +1,1 @@
-Demo[ https://creator74.github.io/React-joke-api/]
+[Demo] https://creator74.github.io/React-joke-api/
