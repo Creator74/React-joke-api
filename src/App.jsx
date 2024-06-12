@@ -58,11 +58,12 @@ function MyForm() {
   const [error, setError] = useState(null);
 
   async function fetchJokeData() {
-    setData([]);
     setAreCallsInProgress(true);
-    var urls = [];
-    for (var i = 1; i <= numApiCalls; i++) {
-      urls.push("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,explicit");
+    const urls = [];
+    for (let i = 1; i <= numApiCalls; i++) {
+      urls.push(
+        "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+      );
     }
     console.log(urls);
     try {
@@ -87,29 +88,35 @@ function MyForm() {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          Enter Number : 
+          Enter Number :
           <input
-            type="text"
+            type="number"
             value={numApiCalls}
             onChange={(e) => setNumApiCalls(e.target.value)}
             disabled={areCallsInProgress ? true : false}
           />
         </label>
+        <button type="submit" disabled={areCallsInProgress ? true : false}>
+          Submit
+        </button>
       </form>
 
-      <div>
-        {data.map((value, index) => (
-          <div key={index} className="joke-container">
-            {value.type === "single" ? (
-              value.joke
-            ) : (
-              <>
-                <div>{value.setup}</div>
-                <div>{value.delivery}</div>
-              </>
-            )}
-          </div>
-        ))}
+      <div className="loading-text">
+        {areCallsInProgress
+          ?<p>Constructing jokes...</p>
+          : data.map((value, index) => (
+              <div key={index} className="joke-container">
+                {value.type === "single" ? (
+                  value.joke
+                ) : (
+                  <>
+                    <div>{value.setup}</div>
+                    <div>{value.delivery}</div>
+                  </>
+                )}
+                {index < data.length - 1 && <hr />}
+              </div>
+            ))}
       </div>
     </div>
   );
